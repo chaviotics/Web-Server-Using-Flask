@@ -1,11 +1,15 @@
 from flask import Flask, render_template, url_for
 app = Flask(__name__)
-print(__name__)
+# print(__name__)
 
-@app.route('/') # a decorator
-def hello_world():
-    # print(url_for('static', filename='Cat icon.ico'))
-    return render_template('index.html') # finds a folder named "templates" and gets the html file
+@app.route('/<username>/<int:post_id>') # using URL parameters; Variables Rules in Flask
+def hello_world(username=None, post_id=None):
+    return render_template('index.html', name=username, post_id=post_id)
+    # Nawala ang color diri though :/
+
+# @app.route('/') # a decorator
+# def hello_world():
+#     return render_template('index.html') # finds a folder named "templates" and gets the html file
 
 @app.route('/about.html') 
 def about():
